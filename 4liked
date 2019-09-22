@@ -1,0 +1,31 @@
+private static void Main(string[] args)
+        {
+            var maxi = 0;
+            var maxj = 0;
+            var maxProd = 0;
+            for (var i = 999; i > 100; i--)
+            for (var j = 999; j > 100; j--)
+            {
+                var product = i * j;
+                if (IsPalindrome(product))
+                    if (product > maxProd)
+                    {
+                        maxi = i;
+                        maxj = j;
+                        maxProd = product;
+                    }
+            }
+            Console.WriteLine(
+                "The highest Palindrome number made from the product of two 3-digit numbers is {0}*{1}={2}", maxi, maxj,
+                maxProd);
+            Console.ReadKey();
+        }
+
+        public static bool IsPalindrome(int number)
+        {
+            var numberString = number.ToString();
+            var reverseString = string.Empty;
+            for (var i = numberString.Length - 1; i >= 0; --i)
+                reverseString += numberString[i];
+            return numberString == reverseString;
+        }
